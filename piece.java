@@ -1,22 +1,41 @@
 abstract public class Piece {
-  private String position;
   private String symbol;
-  private int[] movePattern;
-  
-  public void setPosition(String pos){
-    String curPos = getPosition();
-    String[] moves = generateMoves(curPos);
-    for(String move : moves){
-      if(pos == move){
-        position = pos;
-      }
-    }
+  private int[] position;
+  private boolean captured; 
+  private String[] movePattern;
+
+  Piece(){
+    captured = false;
   }
-  public String getPosition(){
+
+  public void setSymbol(String sym){
+    symbol = sym;
+  }
+  public String getSymbol(){
+    return symbol;
+  }
+  
+  public void setPosition(int[] pos){
+    position = pos;
+   
+  }
+  public int[] getPosition(){
     return position;
   }
 
-  abstract public String getSymbol();
-  
-  public abstract String[] generateMoves();
+  public void setCaptured(boolean captive){
+    captured = captive;
+  }
+  public boolean getCaptured(){
+    return captured;
+  }
+
+  public void setMovePattern(String[] pattern){
+    movePattern = pattern;
+  }
+  public String[] getMovePattern(){
+    return movePattern;
+  }
+
+  public abstract boolean checkMove(int[] oldPos, int[] newPos);
 }

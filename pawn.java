@@ -1,28 +1,29 @@
 class Pawn extends Piece{
   private boolean starting;
+  private String[] startPattern;
 
   public Pawn(){
-    this.position = null;
-    this.symbol = "P";
-    this.startPattern = ["1U", "2U"];
-    this.movePattern = ["1U"];
-    this.starting = true;
+    position = null;
+    symbol = "P";
+    startPattern = new String[]{"1U", "2U"};
+    movePattern = new String[]{"1U"};
+    starting = true;
   }
   
-   public void setPosition(String pos){
+  public void setPosition(String pos){
     if(!curPos){
-      this.position = pos;
+      position = pos;
     }
     String curPos = getPosition();
     String[] moves = generateMoves(curPos);
     for(String move : moves){
       if(pos == move){
-        this.position = pos;
+        position = pos;
       }
     }
+  }
 
-    public String[] generateMoves(String pos){
+  public String[] generateMoves(String pos){
       //need to check for 
-    }
   }
 }
